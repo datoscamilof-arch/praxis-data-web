@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth scroll-pt-24">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praxis Data — Inteligencia y Análisis para Empresas</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: '#2A3D75',
+          'navy-hover': '#1f2d57',
+          terra: '#D48D7C',
+          beige: '#F4F0EF',
+          sage: '#7C9885',
+        },
+        fontFamily: {
+          sans: ['"PT Sans"', 'sans-serif'],
+          heading: ['"Space Grotesk"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #F4F0EF; -webkit-font-smoothing: antialiased; }
+  .font-heading { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+  
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade { animation: fade-in-up 0.8s ease-out forwards; }
+
+  /* Estilos para las Pestañas (Tabs) */
+  .case-panel { display: none; animation: fade-in-up 0.4s ease-out forwards; }
+  .case-panel.active { display: block; }
+  .tab-btn.active { background-color: #2A3D75; color: white; border-color: #2A3D75; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col text-navy font-sans relative">
+
+<!-- FONDO ABSTRACTO -->
+<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none flex items-center justify-center">
+  <div class="absolute top-[-15%] left-[-10%] text-[45rem] font-heading font-bold text-navy/[0.04] -rotate-12 select-none">P</div>
+  <div class="absolute top-[10%] right-[-15%] text-[55rem] font-heading font-bold text-terra/[0.05] rotate-12 select-none">X</div>
+  <div class="absolute bottom-[-30%] left-[15%] text-[50rem] font-heading font-bold text-navy/[0.03] -rotate-6 select-none">D</div>
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 w-full bg-navy shadow-md">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10">
+    <div class="flex h-20 items-center justify-between gap-6">
+      <a href="#" class="shrink-0 font-heading text-2xl text-beige tracking-wide">
+        Praxis <span class="text-terra">Data</span>
+      </a>
+      <nav class="hidden items-center gap-5 lg:flex xl:gap-7">
+        <a href="#metodologia" class="group relative flex flex-col items-center whitespace-nowrap py-1.5 font-bold text-[15px] tracking-wide text-beige transition-colors hover:text-terra">
+          <span class="relative inline-block">Metodología<span class="absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 bg-terra transition-transform duration-300 group-hover:scale-x-100"></span></span>
+        </a>
+        <a href="#soluciones" class="group relative flex flex-col items-center whitespace-nowrap py-1.5 font-bold text-[15px] tracking-wide text-beige transition-colors hover:text-terra">
+          <span class="relative inline-block">Soluciones<span class="absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 bg-terra transition-transform duration-300 group-hover:scale-x-100"></span></span>
+        </a>
+        <a href="#casos" class="group relative flex flex-col items-center whitespace-nowrap py-1.5 font-bold text-[15px] tracking-wide text-beige transition-colors hover:text-terra">
+          <span class="relative inline-block">Casos Aplicados<span class="absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 bg-terra transition-transform duration-300 group-hover:scale-x-100"></span></span>
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow">
+  
+  <!-- HERO SECTION -->
+  <section class="px-6 md:px-20 pt-20 pb-12 md:pt-28 md:pb-14 text-center animate-fade">
+    <div class="mx-auto max-w-4xl">
+      <h1 class="font-heading text-navy text-4xl leading-tight md:text-5xl lg:text-6xl">
+        Inteligencia comercial accionable.
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-navy/80">
+        Convertimos los registros desordenados de tu empresa en información clara para decidir con seguridad.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#contacto" class="inline-block rounded-full bg-navy px-8 py-3.5 font-bold text-white transition hover:bg-navy-hover shadow-lg">Pedir diagnóstico gratis</a>
+        <a href="#soluciones" class="inline-block rounded-full border-2 border-navy px-8 py-3.5 font-bold text-navy transition hover:bg-white hover:text-navy">Ver módulos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA -->
+  <section id="metodologia" class="px-6 md:px-20 py-10 md:py-14 scroll-mt-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra">Cómo trabajamos</span>
+        <h2 class="mt-3 font-heading text-3xl leading-tight text-navy md:text-4xl">Tomamos tus datos y los volvemos información útil.</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-navy/70">No necesitas tener nada organizado. Nosotros nos encargamos de ordenarlo, entenderlo y devolvértelo en algo simple de usar.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="bg-white rounded-2xl p-8 border border-navy/10">
+          <div class="text-terra font-heading text-2xl mb-3">1</div>
+          <h3 class="font-heading text-xl text-navy mb-2">Recopilamos</h3>
+          <p class="text-navy/70">Revisamos lo que ya tienes — un cuaderno, un Excel, un sistema de ventas. No importa el estado en que esté.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-navy/10">
+          <div class="text-terra font-heading text-2xl mb-3">2</div>
+          <h3 class="font-heading text-xl text-navy mb-2">Organizamos y analizamos</h3>
+          <p class="text-navy/70">Limpiamos los datos y buscamos patrones reales: qué te da plata, qué se te está escapando, qué decisión te conviene tomar ya.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-navy/10">
+          <div class="text-terra font-heading text-2xl mb-3">3</div>
+          <h3 class="font-heading text-xl text-navy mb-2">Te lo entregamos simple</h3>
+          <p class="text-navy/70">Un panel que puedes revisar desde el celular, sin tecnicismos, con recomendaciones concretas para tu negocio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUCIONES -->
+  <section id="soluciones" class="px-6 md:px-20 py-10 md:py-14 scroll-mt-24">
+    <div class="mx-auto max-w-7xl rounded-3xl bg-navy p-10 md:p-14 shadow-xl relative overflow-hidden">
+      <div class="absolute top-[-20%] right-[-10%] text-[30rem] font-heading font-bold text-white/[0.03] rotate-12 select-none pointer-events-none">S</div>
+      
+      <div class="relative z-10 text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra">Sistemas de Decisión</span>
+        <h2 class="mt-3 font-heading text-3xl leading-tight text-beige md:text-4xl">¿Qué área de tu negocio está perdiendo dinero?</h2>
+      </div>
+
+      <div class="relative z-10 mb-10 rounded-2xl bg-white/10 border border-white/10 p-5 text-center max-w-3xl mx-auto">
+        <p class="text-beige/90"><strong class="text-terra">Diagnóstico Express gratis</strong> — antes de cualquier plan pagado, revisamos tus datos actuales y te entregamos 1 hallazgo + 1 recomendación, sin costo.</p>
+      </div>
+
+      <!-- INFORME COMPLETO DESTACADO Y CENTRADO -->
+      <div class="relative z-10 mb-12 rounded-3xl bg-white p-8 md:p-12 flex flex-col items-center text-center max-w-4xl mx-auto shadow-2xl transform hover:scale-[1.01] transition-transform">
+        <span class="inline-block bg-terra/15 text-terra font-bold px-4 py-1.5 rounded-full text-sm uppercase mb-4 tracking-wider">Ideal si no sabes por dónde empezar</span>
+        <h3 class="font-heading text-3xl md:text-4xl text-navy mb-4">Informe Completo (Diagnóstico)</h3>
+        <p class="text-navy/70 text-lg max-w-2xl mb-8">Te damos una mirada completa de tu negocio antes de que te metas de lleno en un área — hallazgos claros, un panel que puedes revisar tú mismo, y una <strong>reunión</strong> donde te explicamos todo sin tecnicismos.</p>
+        <div class="text-4xl font-bold text-terra mb-8">$250K <span class="text-lg text-navy/50 font-normal">COP</span></div>
+        <a href="https://wa.me/573014720862" target="_blank" class="inline-block px-10 py-4 rounded-full bg-navy text-white font-bold hover:bg-navy-hover transition shadow-lg text-lg">Solicitar Diagnóstico</a>
+      </div>
+
+      <!-- 3 TARJETAS CENTRADAS -->
+      <div class="grid gap-6 md:grid-cols-3 relative z-10">
+        
+        <!-- Tarjeta Inventario -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center text-center border-4 border-terra/30 transition-all hover:border-terra/60 shadow-lg">
+          <div class="text-xs font-bold text-terra uppercase mb-3">Más pedido</div>
+          <h3 class="font-heading text-2xl text-navy mb-3">Inventario</h3>
+          <p class="text-navy/70 mb-6 grow">Controla tu mercancía. Centralizamos tus registros para que sepas qué tienes, qué se mueve, qué está estancado y cuándo comprar o liquidar.</p>
+          <div class="text-3xl font-bold text-terra mb-6">$450K <span class="text-sm text-navy/50 font-normal">COP</span></div>
+          <button onclick="openModal('modal-inventario')" class="w-full py-3 rounded-full bg-navy text-white font-bold hover:bg-navy-hover transition shadow-md">Ver detalles del sistema</button>
+        </div>
+
+        <!-- Tarjeta Ventas -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-lg border border-transparent hover:border-navy/20 transition-all">
+          <h3 class="font-heading text-2xl text-navy mb-3">Ventas</h3>
+          <p class="text-navy/70 mb-6 grow">Entiende a tus clientes. Un sistema para saber a quién le vendes, quién vuelve, qué productos funcionan y dónde estás perdiendo oportunidades comerciales.</p>
+          <div class="text-3xl font-bold text-terra mb-6">$500K <span class="text-sm text-navy/50 font-normal">COP</span></div>
+          <button onclick="openModal('modal-ventas')" class="w-full py-3 rounded-full border-2 border-navy text-navy font-bold hover:bg-navy hover:text-white transition">Ver detalles del sistema</button>
+        </div>
+
+        <!-- Tarjeta Finanzas -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-lg border border-transparent hover:border-navy/20 transition-all">
+          <h3 class="font-heading text-2xl text-navy mb-3">Finanzas</h3>
+          <p class="text-navy/70 mb-6 grow">Controla tu rentabilidad. Descubre cuánto estás ganando realmente, controla tus márgenes y sabe cuánto dinero puedes comprometer en caja.</p>
+          <div class="text-3xl font-bold text-terra mb-6">$650K <span class="text-sm text-navy/50 font-normal">COP</span></div>
+          <button onclick="openModal('modal-finanzas')" class="w-full py-3 rounded-full border-2 border-navy text-navy font-bold hover:bg-navy hover:text-white transition">Ver detalles del sistema</button>
+        </div>
+      </div>
+      
+      <!-- ACOMPAÑAMIENTO CONTINUO -->
+      <div class="relative z-10 mt-10 rounded-2xl bg-white border-4 border-terra p-8 md:p-10 text-center shadow-2xl">
+        <span class="text-sm font-bold uppercase tracking-[0.15em] text-terra">Acompañamiento continuo</span>
+        <h3 class="mt-3 font-heading text-2xl md:text-3xl text-navy">Acompañamiento mes a mes con tu propio analista de datos</h3>
+        <p class="mt-4 text-navy/80 max-w-2xl mx-auto text-lg">Tu panel se mantiene actualizado solo, y cada mes revisamos juntos qué cambió en tu negocio y qué decisión te conviene tomar para seguir creciendo.</p>
+        <div class="mt-6 text-3xl font-bold text-terra">$200K <span class="text-lg font-normal text-navy/60">COP / mes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS DE ESTUDIO -->
+  <section id="casos" class="px-6 md:px-20 pb-16 md:pb-24 pt-10 scroll-mt-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-10 text-center md:text-left">
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra">Casos Aplicados</span>
+        <h2 class="mt-2 font-heading text-3xl leading-tight text-navy md:text-4xl">Explorá nuestro trabajo.</h2>
+        <p class="text-navy/70 mt-2 max-w-2xl">Mira cómo nuestras herramientas han resuelto problemas reales y juega con los simuladores interactivos.</p>
+      </div>
+
+      <div class="mb-8 rounded-xl bg-terra/10 border border-terra/20 px-5 py-3 text-sm text-navy/80">
+        <strong>Tus datos, protegidos:</strong> la información que ves aquí está tratada bajo nuestra política de tratamiento de datos. Antes de publicar cualquier hallazgo, conversamos con cada cliente y limitamos la información compartida para proteger su privacidad. <strong>Praxis Data: Análisis de datos financieros desde 2024.</strong>
+      </div>
+
+      <!-- Botones de Pestañas -->
+      <div class="flex flex-wrap gap-3 mb-8">
+        <button onclick="changeTab('tab-interforros')" id="btn-tab-interforros" class="tab-btn active px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Empresa Textil</button>
+        <button onclick="changeTab('tab-panaderia')" id="btn-tab-panaderia" class="tab-btn px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Panadería</button>
+        <button onclick="changeTab('tab-restaurante')" id="btn-tab-restaurante" class="tab-btn px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Restaurante</button>
+        <button onclick="changeTab('tab-fruver')" id="btn-tab-fruver" class="tab-btn px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Fruver</button>
+        <button onclick="changeTab('tab-distribuidora')" id="btn-tab-distribuidora" class="tab-btn px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Distribuidora</button>
+        <button onclick="changeTab('tab-tecnologia')" id="btn-tab-tecnologia" class="tab-btn px-6 py-2 rounded-full border border-navy/30 text-navy font-bold transition hover:border-navy">Venta de Tecnología</button>
+      </div>
+
+      <!-- EMPRESA TEXTIL -->
+      <div id="tab-interforros" class="case-panel active bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-sage/20 text-sage font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Cliente confidencial · Python + Power BI</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Empresa Textil — retail de confección</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> Registros transaccionales crudos, sin visibilidad de qué líneas de producto, canales o clientes sostenían el negocio.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>Una sola línea de producto genera el 64,6% de los ingresos; el 49% de los clientes están "Perdidos" o "En Riesgo" ($40,4M históricos).</p>
+            </div>
+            <p class="text-navy/80"><strong>Solución:</strong> Campaña de reactivación para 72 clientes "En Riesgo" y diversificación hacia canales digitales, hoy solo 10,2% de la facturación.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">64,6%</div><div class="text-[11px] text-navy/60 mt-1">Ingresos línea principal</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">298</div><div class="text-[11px] text-navy/60 mt-1">Clientes analizados</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">$40,4M</div><div class="text-[11px] text-navy/60 mt-1">En riesgo de fuga</div></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Ingresos por línea</h5>
+                <div class="flex items-center gap-4">
+                  <div class="w-20 h-20 rounded-full shrink-0 relative" style="background:conic-gradient(#2A3D75 0% 64.6%, #D48D7C 64.6% 100%);"><div class="absolute inset-[14px] bg-beige rounded-full"></div></div>
+                  <div class="text-xs text-navy/70 space-y-1.5">
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-navy mr-1.5"></span>Línea principal 64,6%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-terra mr-1.5"></span>Otras líneas 35,4%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Cartera (298 clientes)</h5>
+                <div class="space-y-3">
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Activos/Leales</span><span class="font-bold text-navy">151</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>En riesgo</span><span class="font-bold text-navy">72</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Perdidos</span><span class="font-bold text-navy">75</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANADERÍA CON HERRAMIENTA INTERACTIVA -->
+      <div id="tab-panaderia" class="case-panel bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-terra/20 text-terra font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Herramienta: Control de Mermas</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Panadería de barrio — Cali</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> La producción diaria se calculaba "al ojo", generando mucha pérdida (merma) al final del día por pan que no se vendía.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>El 40% del desperdicio diario venía de solo 5 referencias de baja rotación. Costos hundidos que nadie estaba midiendo.</p>
+            </div>
+            <p class="text-navy/80 mb-4"><strong>Solución:</strong> Implementamos el tablero de mermas. Ajustando la producción diaria, lograron <strong>-$1,8M de pérdida mensual</strong> sin tener que vender ni un pan más.</p>
+            <p class="text-sm text-navy/60 font-bold mt-4">JUEGA CON EL SIMULADOR DE MERMAS A LA DERECHA</p>
+          </div>
+          <!-- SIMULADOR INTERACTIVO DE MERMAS -->
+          <div class="flex flex-col gap-4">
+            <div class="bg-beige rounded-2xl p-6 border-2 border-terra/30 shadow-md">
+              <h5 class="text-sm font-bold text-navy uppercase mb-6">Simulador Interactivo de Pérdidas</h5>
+              
+              <div class="mb-5">
+                <label class="block text-xs font-bold text-navy/70 mb-1 uppercase tracking-wide">Panes producidos al día: <span id="out-panes" class="text-navy font-heading text-xl ml-2">1,000</span></label>
+                <input type="range" id="slide-panes" min="200" max="3000" step="50" value="1000" class="w-full accent-terra cursor-pointer h-2 bg-white rounded-lg appearance-none">
+              </div>
+              
+              <div class="mb-8">
+                <label class="block text-xs font-bold text-navy/70 mb-1 uppercase tracking-wide">% de pan que sobra (Merma): <span id="out-merma" class="text-terra font-heading text-xl ml-2">20%</span></label>
+                <input type="range" id="slide-merma" min="1" max="50" step="1" value="20" class="w-full accent-terra cursor-pointer h-2 bg-white rounded-lg appearance-none">
+              </div>
+              
+              <div class="bg-white rounded-xl p-5 text-center shadow-inner border border-navy/5">
+                <p class="text-[11px] font-bold text-navy/50 uppercase tracking-wider mb-1">Dinero que pierdes al mes (aprox)</p>
+                <div class="text-4xl font-heading text-terra mb-1" id="out-perdida">$-</div>
+                <p class="text-xs text-navy/50">Cálculo estimado a costo de $800 COP por unidad de pan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESTAURANTE -->
+      <div id="tab-restaurante" class="case-panel bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-terra/20 text-terra font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Herramientas: Horas Pico + Rentabilidad</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Restaurante / comida rápida — Cali</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> Ventas por plato y turnos de personal registrados por separado, sin cruzarse nunca.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>Al implementar el <strong>Análisis de Horas y Días Pico</strong> notamos que los viernes 7-9pm venden 2.4x el promedio, pero tenían exactamente el mismo personal que un martes lento.</p>
+            </div>
+            <p class="text-navy/80"><strong>Solución:</strong> Se reforzó el turno del viernes en la noche basándonos en los datos y se usó el <strong>Análisis de Rentabilidad</strong> para evaluar 2 platos que daban muy bajo margen.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">2.4x</div><div class="text-[11px] text-navy/60 mt-1">Ventas viernes vs. promedio</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">2</div><div class="text-[11px] text-navy/60 mt-1">Platos de bajo margen</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">Igual</div><div class="text-[11px] text-navy/60 mt-1">Personal en ambos turnos</div></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Ventas por franja horaria</h5>
+                <div class="flex items-center gap-4">
+                  <div class="w-20 h-20 rounded-full shrink-0 relative" style="background:conic-gradient(#D48D7C 0% 45%, #2A3D75 45% 80%, #7C9885 80% 100%);"><div class="absolute inset-[14px] bg-beige rounded-full"></div></div>
+                  <div class="text-xs text-navy/70 space-y-1.5">
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-terra mr-1.5"></span>Noche (6-9pm) 45%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-navy mr-1.5"></span>Almuerzo 35%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-sage mr-1.5"></span>Otras horas 20%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Viernes vs. martes (7-9pm)</h5>
+                <div class="space-y-3">
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Viernes</span><span class="font-bold text-navy">100%</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Martes</span><span class="font-bold text-navy">42%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRUVER -->
+      <div id="tab-fruver" class="case-panel bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-terra/20 text-terra font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Herramientas: Semáforos + Control de Mermas</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Fruver — Cali</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> Alta merma de producto perecedero sin causa identificada por el dueño.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>Al cruzar datos con nuestro <strong>Control de Mermas</strong>, detectamos que la pérdida subía 34% en 4 productos específicos cuando pasaban más de 2 días en exhibición.</p>
+            </div>
+            <p class="text-navy/80"><strong>Solución:</strong> Implementamos la herramienta de <strong>Alertas y Semáforos</strong>. Ahora el dueño recibe un aviso en su celular cuando estos 4 productos críticos deben liquidarse antes de dañarse.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">+34%</div><div class="text-[11px] text-navy/60 mt-1">Merma tras 2 días</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">4</div><div class="text-[11px] text-navy/60 mt-1">Productos críticos</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">Diaria</div><div class="text-[11px] text-navy/60 mt-1">Frecuencia de alerta</div></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Merma por producto</h5>
+                <div class="flex items-center gap-4">
+                  <div class="w-20 h-20 rounded-full shrink-0 relative" style="background:conic-gradient(#D48D7C 0% 60%, #2A3D75 60% 100%);"><div class="absolute inset-[14px] bg-beige rounded-full"></div></div>
+                  <div class="text-xs text-navy/70 space-y-1.5">
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-terra mr-1.5"></span>4 críticos 60%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-navy mr-1.5"></span>Resto 40%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">% merma según almacenaje</h5>
+                <div class="space-y-3">
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Menos de 1 día</span><span class="font-bold text-navy">8%</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>1-2 días</span><span class="font-bold text-navy">15%</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Más de 2 días</span><span class="font-bold text-navy">34%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISTRIBUIDORA -->
+      <div id="tab-distribuidora" class="case-panel bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-terra/20 text-terra font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Herramientas: Alertas Reposición + Tope de Gasto</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Distribuidora de abarrotes — Valle</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> Inventario muy grande revisado de memoria, lo que causaba constantes quiebres de stock y compras excesivas de productos que no rotaban.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>Tras 2 meses de conectar las <strong>Alertas de Reposición</strong> automáticas, los quiebres de inventario (quedarse sin producto para vender) bajaron un 23%.</p>
+            </div>
+            <p class="text-navy/80"><strong>Solución:</strong> Se activó la herramienta <strong>Tope de Gasto Seguro</strong> para saber exactamente cuánto pedir a los proveedores cada semana sin afectar el flujo de caja del negocio.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">-23%</div><div class="text-[11px] text-navy/60 mt-1">Quiebres en 2 meses</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">6</div><div class="text-[11px] text-navy/60 mt-1">Productos críticos</div></div>
+              <div class="bg-beige rounded-xl p-4 text-center border border-navy/10"><div class="font-heading text-2xl text-terra">Semanal</div><div class="text-[11px] text-navy/60 mt-1">Ajuste de pedido</div></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Quiebres por categoría</h5>
+                <div class="flex items-center gap-4">
+                  <div class="w-20 h-20 rounded-full shrink-0 relative" style="background:conic-gradient(#D48D7C 0% 45%, #2A3D75 45% 75%, #7C9885 75% 100%);"><div class="absolute inset-[14px] bg-beige rounded-full"></div></div>
+                  <div class="text-xs text-navy/70 space-y-1.5">
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-terra mr-1.5"></span>Abarrotes 45%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-navy mr-1.5"></span>Aseo 30%</div>
+                    <div><span class="inline-block w-2 h-2 rounded-full bg-sage mr-1.5"></span>Otros 25%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-beige rounded-2xl p-5 border border-navy/10">
+                <h5 class="text-xs font-bold text-navy/70 uppercase mb-4">Quiebres de inventario</h5>
+                <div class="space-y-3">
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Antes del sistema</span><span class="font-bold text-navy">100%</span></div></div>
+                  <div><div class="flex justify-between text-xs text-navy/70 mb-1"><span>Después (2 meses)</span><span class="font-bold text-navy">77%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTA DE TECNOLOGÍA CON HERRAMIENTA INTERACTIVA -->
+      <div id="tab-tecnologia" class="case-panel bg-white/90 backdrop-blur-sm border border-navy/10 rounded-3xl p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <span class="inline-block bg-terra/20 text-terra font-bold px-3 py-1 rounded-full text-xs uppercase mb-4">Herramienta: Simulador de Precios</span>
+            <h3 class="font-heading text-3xl text-navy mb-4">Venta de Tecnología — varias sedes en Cali</h3>
+            <p class="text-navy/80 mb-6"><strong>El problema:</strong> En temporadas comerciales, los vendedores daban descuentos agresivos sin calcular si el aumento de clientes compensaba la rebaja del precio. Terminaban trabajando más y ganando menos.</p>
+            <div class="bg-navy text-white p-6 rounded-2xl mb-6 shadow-inner">
+              <h4 class="font-bold text-terra mb-2">Hallazgo Clave</h4>
+              <p>Dar un 15% de descuento en un producto que tiene el 30% de margen, te obliga a vender un <strong>100% más de unidades</strong> solo para ganar lo mismo que antes.</p>
+            </div>
+            <p class="text-navy/80"><strong>Solución:</strong> Habilitamos nuestro <strong>Simulador de Precios</strong> para el dueño. Ahora sabe exactamente el impacto comercial antes de lanzar un descuento.</p>
+            <p class="text-sm text-navy/60 font-bold mt-4">PRUEBA EL SIMULADOR DE DESCUENTOS A LA DERECHA</p>
+          </div>
+          <!-- SIMULADOR INTERACTIVO DE DESCUENTOS -->
+          <div class="flex flex-col gap-4">
+            <div class="bg-beige rounded-2xl p-6 border-2 border-terra/30 shadow-md">
+              <h5 class="text-sm font-bold text-navy uppercase mb-6">Simulador de Promociones</h5>
+              
+              <div class="mb-5">
+                <label class="block text-xs font-bold text-navy/70 mb-1 uppercase tracking-wide">Tu margen de ganancia actual: <span id="out-margen" class="text-navy font-heading text-xl ml-2">30%</span></label>
+                <input type="range" id="slide-margen" min="10" max="80" step="5" value="30" class="w-full accent-terra cursor-pointer h-2 bg-white rounded-lg appearance-none">
+              </div>
+              
+              <div class="mb-8">
+                <label class="block text-xs font-bold text-navy/70 mb-1 uppercase tracking-wide">Descuento que quieres dar: <span id="out-desc" class="text-terra font-heading text-xl ml-2">10%</span></label>
+                <input type="range" id="slide-desc" min="1" max="50" step="1" value="10" class="w-full accent-terra cursor-pointer h-2 bg-white rounded-lg appearance-none">
+              </div>
+              
+              <div class="bg-white rounded-xl p-5 text-center shadow-inner border border-navy/5">
+                <p class="text-[12px] font-bold text-navy/70 uppercase tracking-wider mb-2">Aumento de ventas obligatorio</p>
+                <div class="text-4xl font-heading text-terra mb-2" id="out-ventamas">+50%</div>
+                <p class="text-xs text-navy/60 leading-relaxed">Para ganar el mismo dinero que antes, debes vender este porcentaje adicional. Si vendes menos de eso, la promoción te generará pérdidas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="contacto" class="w-full bg-navy px-6 py-16 lg:px-32 z-10 relative">
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
+    <div class="text-center md:text-left">
+      <span class="font-heading text-3xl text-beige tracking-wide">Praxis <span class="text-terra">Data</span></span>
+      <p class="mt-2 text-sm text-beige/70 max-w-xs"><strong>Análisis de datos financieros desde 2024</strong>.</p>
+      <p class="mt-1 text-sm text-beige/80">Escríbenos a: <a href="mailto:praxisdatos@gmail.com" class="text-terra hover:underline font-bold">praxisdatos@gmail.com</a></p>
+    </div>
+    <div class="flex flex-col items-center md:items-end gap-4">
+      <span class="whitespace-nowrap text-lg font-bold text-beige">¿Hacemos un diagnóstico?</span>
+      <a href="https://wa.me/573014720862" target="_blank" class="inline-block rounded-full bg-terra px-8 py-3 font-bold text-white transition hover:bg-white hover:text-navy shadow-lg">Contactar vía WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================== -->
+<!-- MODALES (Ventanas Emergentes Ocultas)      -->
+<!-- ========================================== -->
+
+<!-- Modal Inventario -->
+<div id="modal-inventario" class="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-10 relative transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-box-1">
+    <button onclick="closeModal('modal-inventario')" class="absolute top-6 right-6 text-navy/50 hover:text-navy text-2xl font-bold">&times;</button>
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra mb-2 block">Detalle de Sistema</span>
+    <h3 class="font-heading text-3xl text-navy mb-4">Sistema de Control de Inventario</h3>
+    <p class="text-navy/80 mb-6">Un sistema integral para saber exactamente qué tienes, qué se está vendiendo rápido y qué se está estancando en tu negocio.</p>
+    <ul class="space-y-3 text-navy/70 mb-8 py-6">
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Dashboard Interactivo:</strong> Visualiza rotación, productos estancados y valorización en tiempo real.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Scanner de Stock con IA:</strong> Tómale foto a facturas o remisiones y el sistema actualiza el stock automáticamente.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Control de Mermas y Desperdicios:</strong> Identifica y reduce la pérdida de productos perecederos o dañados para proteger tu ganancia.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Alertas y Semáforos:</strong> Avisos de cuándo reponer un producto o cuándo empezar a liquidarlo.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Costos Reales:</strong> Cálculo automático del costo real de adquisición de tu inventario.</li>
+      <li class="flex items-start gap-3 bg-beige p-3 rounded-lg mt-4"><span class="text-terra font-bold">+</span> <strong>Automatización de Entrada (Opcional):</strong> Registra entradas o mermas dictándole notas de voz por WhatsApp a nuestra IA.</li>
+    </ul>
+    <div class="flex justify-end gap-4">
+      <button onclick="closeModal('modal-inventario')" class="px-6 py-2 rounded-full font-bold text-navy hover:bg-beige transition">Cerrar</button>
+      <a href="https://wa.me/573014720862" target="_blank" onclick="closeModal('modal-inventario')" class="px-6 py-2 rounded-full bg-navy text-white font-bold hover:bg-navy-hover transition">Me interesa</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ventas -->
+<div id="modal-ventas" class="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-10 relative transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-box-2">
+    <button onclick="closeModal('modal-ventas')" class="absolute top-6 right-6 text-navy/50 hover:text-navy text-2xl font-bold">&times;</button>
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra mb-2 block">Detalle de Sistema</span>
+    <h3 class="font-heading text-3xl text-navy mb-4">Sistema de Inteligencia Comercial</h3>
+    <p class="text-navy/80 mb-6">Un sistema diseñado para entender el comportamiento de tus clientes, mejorar la retención y tomar decisiones estratégicas de ventas.</p>
+    <ul class="space-y-3 text-navy/70 mb-8 py-6">
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Dashboard Comercial:</strong> Visualiza ingresos, evolución de ventas y ticket promedio.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>CRM Automático:</strong> Base de clientes que se alimenta sola y los clasifica en VIP, Leales, En Riesgo o Nuevos sin que digites nada.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Horas y Días Pico:</strong> Descubre exactamente cuándo vendes más para optimizar los turnos de tu personal.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Venta Cruzada (Combos):</strong> Identifica qué productos se compran juntos con más frecuencia.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Simulador de Precios:</strong> Descubre cuánto puedes bajar el precio en una promoción sin afectar tu utilidad final.</li>
+      <li class="flex items-start gap-3 bg-beige p-3 rounded-lg mt-4"><span class="text-terra font-bold">+</span> <strong>Automatización de Entrada (Opcional):</strong> Registra las ventas diarias dictándole notas de voz por WhatsApp a nuestra IA.</li>
+    </ul>
+    <div class="flex justify-end gap-4">
+      <button onclick="closeModal('modal-ventas')" class="px-6 py-2 rounded-full font-bold text-navy hover:bg-beige transition">Cerrar</button>
+      <a href="https://wa.me/573014720862" target="_blank" onclick="closeModal('modal-ventas')" class="px-6 py-2 rounded-full bg-terra text-white font-bold hover:bg-white hover:text-terra border border-terra transition">Me interesa</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Finanzas -->
+<div id="modal-finanzas" class="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-10 relative transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-box-3">
+    <button onclick="closeModal('modal-finanzas')" class="absolute top-6 right-6 text-navy/50 hover:text-navy text-2xl font-bold">&times;</button>
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-terra mb-2 block">Detalle de Sistema</span>
+    <h3 class="font-heading text-3xl text-navy mb-4">Sistema de Control Financiero</h3>
+    <p class="text-navy/80 mb-6">Un sistema robusto para que dejes de ver solo las ventas brutas y empieces a controlar la rentabilidad, los costos y el dinero real que queda.</p>
+    <ul class="space-y-3 text-navy/70 mb-8 py-6">
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Dashboard Financiero:</strong> Flujo de caja, ingresos y gastos actualizados sin licencias costosas.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Punto de Equilibrio:</strong> Conoce tu meta de ventas diaria para cubrir tus costos fijos y no perder plata.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Análisis de Rentabilidad:</strong> Cruce de costos y ventas para obtener tu utilidad real y márgenes operativos.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Tope de Gasto Seguro:</strong> Calcula exactamente cuánto presupuesto tienes hoy para compras sin quedarte ilíquido.</li>
+      <li class="flex items-start gap-3"><span class="text-terra font-bold">✓</span> <strong>Costo de Reposición:</strong> Calcula si tu ganancia es real frente a los precios actuales de tus proveedores.</li>
+      <li class="flex items-start gap-3 bg-beige p-3 rounded-lg mt-4"><span class="text-terra font-bold">+</span> <strong>Automatización de Entrada (Opcional):</strong> Registra gastos y facturas dictándole notas de voz por WhatsApp a nuestra IA.</li>
+    </ul>
+    <div class="flex justify-end gap-4">
+      <button onclick="closeModal('modal-finanzas')" class="px-6 py-2 rounded-full font-bold text-navy hover:bg-beige transition">Cerrar</button>
+      <a href="https://wa.me/573014720862" target="_blank" onclick="closeModal('modal-finanzas')" class="px-6 py-2 rounded-full bg-navy text-white font-bold hover:bg-navy-hover transition">Me interesa</a>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts Generales e Interactivos -->
+<script>
+  // Pestañas
+  function changeTab(tabId) {
+    document.querySelectorAll('.case-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+    document.getElementById('btn-' + tabId).classList.add('active');
+  }
+
+  // Modales
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const box = modal.querySelector('div');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-95');
+    box.classList.add('scale-100');
+  }
+
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const box = modal.querySelector('div');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-100');
+    box.classList.add('scale-95');
+  }
+
+  // SIMULADORES INTERACTIVOS (JavaScript)
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. Simulador Panadería (Mermas)
+    const slidePanes = document.getElementById('slide-panes');
+    const slideMerma = document.getElementById('slide-merma');
+    const outPanes = document.getElementById('out-panes');
+    const outMerma = document.getElementById('out-merma');
+    const outPerdida = document.getElementById('out-perdida');
+
+    function calcPanaderia() {
+      if(!slidePanes) return;
+      const panes = parseInt(slidePanes.value);
+      const merma = parseInt(slideMerma.value);
+      
+      outPanes.textContent = panes.toLocaleString('es-CO');
+      outMerma.textContent = merma + '%';
+      
+      // Costo fijo estimado de 800 pesos x pan x 30 días
+      const perdida = (panes * (merma/100)) * 800 * 30;
+      outPerdida.textContent = '$' + perdida.toLocaleString('es-CO');
+    }
+
+    if(slidePanes) {
+      slidePanes.addEventListener('input', calcPanaderia);
+      slideMerma.addEventListener('input', calcPanaderia);
+      calcPanaderia(); // init
+    }
+
+    // 2. Simulador Tecnología (Descuentos vs Utilidad)
+    const slideMargen = document.getElementById('slide-margen');
+    const slideDesc = document.getElementById('slide-desc');
+    const outMargen = document.getElementById('out-margen');
+    const outDesc = document.getElementById('out-desc');
+    const outVentaMas = document.getElementById('out-ventamas');
+
+    function calcTecnologia() {
+      if(!slideMargen) return;
+      const margen = parseFloat(slideMargen.value);
+      const desc = parseFloat(slideDesc.value);
+      
+      outMargen.textContent = margen + '%';
+      outDesc.textContent = desc + '%';
+
+      if (desc >= margen) {
+        outVentaMas.textContent = 'PÉRDIDA';
+        outVentaMas.classList.remove('text-terra');
+        outVentaMas.classList.add('text-red-600');
+      } else {
+        // Fórmula de Punto de Equilibrio en descuento: Descuento / (Margen - Descuento)
+        const incremento = (desc / (margen - desc)) * 100;
+        outVentaMas.textContent = '+' + Math.round(incremento) + '%';
+        outVentaMas.classList.remove('text-red-600');
+        outVentaMas.classList.add('text-terra');
+      }
+    }
+
+    if(slideMargen) {
+      slideMargen.addEventListener('input', calcTecnologia);
+      slideDesc.addEventListener('input', calcTecnologia);
+      calcTecnologia(); // init
+    }
+  });
+</script>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a href="https://wa.me/573014720862" target="_blank" aria-label="Contactar por WhatsApp"
+   class="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-xl transition hover:scale-110 hover:shadow-2xl">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white">
+    <path d="M16 2.9C8.8 2.9 2.9 8.8 2.9 16c0 2.5.7 4.9 2 7L3 29l6.2-1.9c2 1.1 4.3 1.7 6.8 1.7 7.2 0 13.1-5.9 13.1-13.1S23.2 2.9 16 2.9zm0 23.7c-2.2 0-4.4-.6-6.2-1.7l-.4-.3-3.7 1.1 1.1-3.6-.3-.4c-1.2-1.9-1.9-4.1-1.9-6.4C4.6 9.7 9.7 4.6 16 4.6S27.4 9.7 27.4 16 22.3 26.6 16 26.6zm7.1-9.3c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.7-.6-.6-.9-.7h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.3 2.4 3.7 5.9 5.1.8.3 1.5.5 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.5.2-1.7-.1-.1-.3-.2-.7-.4z"/>
+  </svg>
+</a>
+
+</body>
+</html>
